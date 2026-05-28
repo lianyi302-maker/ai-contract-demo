@@ -1,0 +1,29 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# 环境变量与密钥（切勿提交）
+.env
+.env.*
+!.env.example
+
+# 日志与缓存
+*.log
+npm-debug.log*
+.vite/
+.cache/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# 本地覆盖配置
+*.local
+
+# 可选：若用 Cursor 本地索引缓存（按需要取消注释）
+# .cursor/
