@@ -7,6 +7,7 @@ import UploadRecognitionPage from './demo/pages/UploadRecognitionPage';
 import ContractOnlineTablePage from './demo/pages/ContractOnlineTablePage';
 import LotOnlineTablePage from './demo/pages/LotOnlineTablePage';
 import DraftPreviewPage from './demo/pages/DraftPreviewPage';
+import CustomerConfirmPage from './demo/pages/CustomerConfirmPage';
 import SubmitCheckPage from './demo/pages/SubmitCheckPage';
 import PrototypeView from './views/PrototypeView';
 import ScreenMapView from './views/ScreenMapView';
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="upload" element={<UploadRecognitionPage />} />
         <Route path="contract-table" element={<ContractOnlineTablePage />} />
         <Route path="lot-table" element={<LotOnlineTablePage />} />
+        <Route path="customer-confirm" element={<CustomerConfirmPage />} />
         <Route path="draft-preview" element={<DraftPreviewPage />} />
         <Route path="submit-check" element={<SubmitCheckPage />} />
       </Route>

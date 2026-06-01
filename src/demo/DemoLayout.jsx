@@ -22,6 +22,7 @@ function DemoLayoutInner() {
           <Link to="/demo/upload">上传识别</Link>
           <Link to="/demo/contract-table">主合同表</Link>
           <Link to="/demo/lot-table">拍品表</Link>
+          <Link to="/demo/customer-confirm">客户确认</Link>
           <Link to="/demo/draft-preview">草稿预览</Link>
           <Link to="/demo/submit-check">提交检查</Link>
         </nav>

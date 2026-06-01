@@ -1,6 +1,6 @@
-export default function SubmitCheckList({ items = [], allPass = false }) {
+export default function SubmitCheckList({ items = [], allPass = false, compact = false }) {
   return (
-    <div className="demo-submit-check">
+    <div className={`demo-submit-check${compact ? ' demo-submit-check--compact' : ''}`}>
       <ul className="demo-submit-check__list">
         {items.map((item) => (
           <li key={item.id} className="demo-submit-check__item">

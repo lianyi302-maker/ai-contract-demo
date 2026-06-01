@@ -3,6 +3,7 @@ import AiWorkbenchPage from '../demo/pages/AiWorkbenchPage';
 import ContractOnlineTablePage from '../demo/pages/ContractOnlineTablePage';
 import LotOnlineTablePage from '../demo/pages/LotOnlineTablePage';
 import DraftPreviewPage from '../demo/pages/DraftPreviewPage';
+import CustomerConfirmPage from '../demo/pages/CustomerConfirmPage';
 import SubmitCheckPage from '../demo/pages/SubmitCheckPage';
 import UploadFlowCard from '../demo/components/UploadFlowCard';
 import RecognitionProgress from '../demo/components/RecognitionProgress';
@@ -43,4 +44,5 @@ export const EMBED_VIEWS = {
   'draft-generating': DraftPreviewPage,
   'draft-done': DraftPreviewPage,
   'submit-check': SubmitCheckPage,
+  'customer-pending': CustomerConfirmPage,
 };

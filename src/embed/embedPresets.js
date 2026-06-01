@@ -1,16 +1,19 @@
 import {
   createInitialDemoFlowState,
-  computeRecognitionSummary,
+  computeRecognitionSummaryWithCustomers,
   UPLOAD_STATUS,
   RECOGNITION_STATUS,
   TABLE_STATUS,
   DRAFT_STATUS,
+  CUSTOMER_TASK_STATUS,
   initialChatMessages,
   mockContractRows,
   mockLotRows,
 } from '../data/demoFlowState';
+import { mockCustomers } from '../mock/mockCustomers';
 
-const summary = () => computeRecognitionSummary(mockContractRows, mockLotRows);
+const summary = () =>
+  computeRecognitionSummaryWithCustomers(mockContractRows, mockLotRows, mockCustomers);
 
 export const EMBED_PRESET_KEYS = [
   'workbench-init',
@@ -24,6 +27,7 @@ export const EMBED_PRESET_KEYS = [
   'draft-generating',
   'draft-done',
   'submit-check',
+  'customer-pending',
 ];
 
 export function getEmbedPresetState(preset) {
@@ -36,6 +40,8 @@ export function getEmbedPresetState(preset) {
         uploadStatus: UPLOAD_STATUS.DONE,
         recognitionStatus: RECOGNITION_STATUS.DONE,
         recognitionSummary: summary(),
+        mockCustomers: structuredClone(mockCustomers),
+        customerUploadDone: true,
         chatMessages: [
           ...structuredClone(initialChatMessages),
           {
@@ -61,7 +67,8 @@ export function getEmbedPresetState(preset) {
             id: 'embed-both',
             role: 'assistant',
             type: 'bothReady',
-            content: '主合同线上表格已确认，拍品清单已确认，可以生成系统草稿。',
+            content:
+              '主合同与拍品清单均已确认，可分别将对应内容写入同一份系统草稿。',
           },
         ],
       };
@@ -81,7 +88,8 @@ export function getEmbedPresetState(preset) {
             id: 'embed-both',
             role: 'assistant',
             type: 'bothReady',
-            content: '主合同线上表格已确认，拍品清单已确认，可以生成系统草稿。',
+            content:
+              '主合同与拍品清单均已确认，可分别将对应内容写入同一份系统草稿。',
           },
           {
             id: 'embed-submit',
@@ -141,7 +149,20 @@ export function getEmbedPresetState(preset) {
         contractTableStatus: TABLE_STATUS.CONFIRMED,
         lotTableStatus: TABLE_STATUS.CONFIRMED,
         draftStatus: DRAFT_STATUS.GENERATED,
+        mockCustomers: structuredClone(mockCustomers),
+        customerTaskStatus: CUSTOMER_TASK_STATUS.PENDING,
         submitCheckStatus: 'ready',
+      };
+    case 'customer-pending':
+      return {
+        ...createInitialDemoFlowState(),
+        uploadStatus: UPLOAD_STATUS.DONE,
+        recognitionStatus: RECOGNITION_STATUS.DONE,
+        recognitionSummary: summary(),
+        recognitionInput: 'customer',
+        mockCustomers: structuredClone(mockCustomers),
+        customerTaskStatus: CUSTOMER_TASK_STATUS.PENDING,
+        selectedCustomerId: mockCustomers[0]?.id,
       };
     default:
       return createInitialDemoFlowState();

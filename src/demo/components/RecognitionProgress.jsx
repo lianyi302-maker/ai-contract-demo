@@ -1,13 +1,15 @@
 import { recognitionSteps } from '../../data/demoFlowState';
 
-export default function RecognitionProgress({ currentStep = 0, progress = 0 }) {
+export default function RecognitionProgress({ currentStep = 0, progress = 0, steps }) {
+  const items = steps ?? recognitionSteps;
+
   return (
     <div className="demo-recognition-progress">
       <div className="demo-recognition-progress__bar">
         <div className="demo-recognition-progress__fill" style={{ width: `${progress}%` }} />
       </div>
       <ul className="demo-recognition-progress__steps">
-        {recognitionSteps.map((step, index) => {
+        {items.map((step, index) => {
           const done = index < currentStep;
           const active = index === currentStep;
           return (
